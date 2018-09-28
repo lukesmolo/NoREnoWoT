@@ -25,6 +25,7 @@ The *thingDiscovery* node is in charge to discover and collect all the Thing Des
 
 
 You can simply instantiate some things by properly configuring the *Thing node* or you can try to entirely reproduce the next example.
+<br>
 <img src="/pics/nodered.png " width="40%">
 <br>
 
