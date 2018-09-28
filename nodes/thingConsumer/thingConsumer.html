@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    RED.nodes.registerType('thingConsumer',{
+        category: 'WoT',
+        color: '#a6bbcf',
+        defaults: {
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"thingConsumer";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="thingConsumer">
+</script>
+
+<script type="text/x-red" data-help-name="thingConsumer">
+	<p>A simple consumer for web of things discovery</p>
+</script>
+

@@ -1,0 +1,134 @@
+<script type="text/javascript">
+    RED.nodes.registerType('thing',{
+        category: 'WoT',
+        color: '#afbfcf',
+        defaults: {
+            name: {value:""},
+            thingDirectoryUrl: {value:""},
+            wotType: {value:""},
+            wotTypeSelect: {value:"sensor"},
+            wotProtocol: {value:""},
+            serialPort: {value:""},
+            pinNumber: {value:"13"},
+            nwd: {value:""},
+            tdt: {value:""},
+            tam: {value:""},
+            remoteTam: {value:""},
+            isRemoteApplication: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"thing";
+        },
+	    oneditprepare: function() {
+		    if(this.remoteTam) {
+			$('#node-input-isFromMarket').prop('checked', true);
+			$('#node-input-tam').closest('div').hide();
+			$('#node-input-remoteTam').closest('div').show();
+		    }
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="thing">
+	<div class="form-row">
+	  <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+	  <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+	  <label for="node-input-thingDirectoryUrl"><i class="icon-tag"></i>Thing Directory Url</label>
+	  <input type="text" id="node-input-thingDirectoryUrl" placeholder="Thing Directory Url">
+    </div>
+    <div class="form-row">
+	  <label for="node-input-wotTypeSelect"><i class="icon-tag"></i> Type</label>
+	   <select id="node-input-wotTypeSelect" >
+  <option value="sensor">Sensor</option>
+  <option value="actuator">Actuator</option>
+</select>
+    </div>
+    <div class="form-row">
+	  <label for="node-input-wotType"><i
+	  class="icon-tag"></i>Semantic Type</label>
+	  <input type="text" id="node-input-wotType" placeholder="Semantic Type">
+    </div>
+
+    <div class="form-row">
+	  <label for="node-input-wotProtocol"><i class="icon-tag"></i> Protocol</label>
+	   <select id="node-input-wotProtocol" >
+  <option value="all">All</option>
+  <option value="http">Http</option>
+  <option value="coap">Coap</option>
+</select>
+    </div>
+
+    <div class="form-row">
+	  <label for="node-input-serialPort"><i
+	  class="icon-tag"></i>Serial Port</label>
+	  <input type="text" id="node-input-serialPort" placeholder="Node-wot Serial Port">
+    </div>
+    <div class="form-row">
+	  <label for="node-input-pinNumber"><i
+	  class="icon-tag"></i>Pin number</label>
+	  <input type="text" id="node-input-pinNumber" placeholder="Pin Number">
+    </div>
+
+    <div class="form-row">
+	  <label for="node-input-nwd"><i
+	  class="icon-tag"></i>Node-wot directory</label>
+	  <input type="text" id="node-input-nwd" placeholder="Node-wot directory">
+    </div>
+    <div class="form-row">
+	  <label for="node-input-tdt"><i
+	  class="icon-tag"></i>Thing description template</label>
+	  <input type="text" id="node-input-tdt" placeholder="Thing description template">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-isFromMarket"><i class="fa fa-random"></i>Is from market application</label>
+        <input type="checkbox" id="node-input-isFromMarket" style="display:inline-block; width:20px; vertical-align:baseline;">
+    </div>
+
+    <div class="form-row">
+	  <label for="node-input-tam"><i
+	  class="icon-tag"></i>Thing application module</label>
+	  <input type="text" id="node-input-tam" placeholder="Thing application module">
+    </div>
+
+    <div class="form-row" style="display:none;">
+	  <label for="node-input-remoteTam"><i
+	  class="icon-tag"></i>Remote Thing application module URL</label>
+	  <input type="text" id="node-input-remoteTam" placeholder="Remote Thing application module Url">
+    </div>
+
+
+<script>
+
+	$(function() {
+	});
+	$("#node-input-isFromMarket").on('change', function() {
+		console.log('changed');
+		if($(this).is(":checked")) {
+			$('#node-input-tam').closest('div').hide();
+			$('#node-input-remoteTam').closest('div').show();
+			var val = $('#node-input-remoteTam').attr('data-val');
+			if(val) {
+				$('#node-input-remoteTam').attr('data-val', val);
+			}
+		} else {
+			$('#node-input-tam').closest('div').show();
+			$('#node-input-remoteTam').closest('div').hide();
+			var val = $('#node-input-remoteTam').val();
+			$('#node-input-remoteTam').attr('data-val', val);
+			$('#node-input-remoteTam').val('');
+
+		}
+	});
+</script>
+</script>
+
+<script type="text/x-red" data-help-name="thing">
+	<p>A simple web of things node</p>
+</script>
+

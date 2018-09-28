@@ -1,0 +1,18 @@
+{
+  "name": "thingDiscovery",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "node-red": {
+    "nodes": {
+      "thingDiscovery": "thingDiscovery.js"
+    }
+  },
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^5.2.1"
+  }
+}

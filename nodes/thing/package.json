@@ -1,0 +1,19 @@
+{
+  "name": "thing",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "node-red": {
+    "nodes": {
+      "thing": "thing.js"
+    }
+  },
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^0.15.0",
+    "require-from-string": "^2.0.2"
+  }
+}

@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    RED.nodes.registerType('thingDiscovery',{
+        category: 'WoT',
+        color: '#a6bbcf',
+        defaults: {
+            wotType: {value:""},
+            thingDirectoryUrl: {value:""},
+            wotProtocol: {value:""},
+            subscribeType: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"thingDiscovery";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="thingDiscovery">
+
+    <div class="form-row">
+	  <label for="node-input-wotType"><i class="icon-tag"></i> Type</label>
+	   <select id="node-input-wotType" >
+  <option value="sensor">Sensor</option>
+  <option value="actuator">Actuator</option>
+</select>
+    </div>
+    <div class="form-row">
+	  <label for="node-input-wotProtocol"><i class="icon-tag"></i> Protocol</label>
+	   <select id="node-input-wotProtocol" >
+  <option value="all">All</option>
+  <option value="http">Http</option>
+  <option value="coap">Coap</option>
+</select>
+    </div>
+	<div class="form-row">
+	  <label for="node-input-thingDirectoryUrl"><i class="icon-tag"></i>Thing Directory Url</label>
+	  <input type="text" id="node-input-thingDirectoryUrl" placeholder="Thing Directory Url">
+    </div>
+	<div class="form-row">
+	  <label for="node-input-subscribeType"><i class="icon-tag"></i>Subscribe Type</label>
+	  <input type="text" id="node-input-subscribeType" placeholder="Subscribe Type">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="thingDiscovery">
+	<p>A simple discovery for web of things</p>
+</script>
+
